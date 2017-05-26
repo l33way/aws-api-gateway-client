@@ -89,7 +89,9 @@ sigV4ClientFactory.newClient = function(config) {
         sortedKeys.push(property);
       }
     }
-    sortedKeys.sort();
+    sortedKeys.sort(function(a,b){
+      return a.toLowerCase() > b.toLowerCase();
+    });
 
     for (let i = 0; i < sortedKeys.length; i++) {
       canonicalHeaders += sortedKeys[i].toLowerCase() + ':' + headers[sortedKeys[i]] + '\n';
